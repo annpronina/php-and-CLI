@@ -7,8 +7,20 @@ function showAllTask($inputTasks) {
         echo $task . "\n";
     }
 }
-function addTask($inputTasks){
-    echo "to be implemented";
+
+function addTask(&$inputTasks){
+    $task = readLine("Ievadiet jaunu uzdevumu: ");
+    array_push($inputTasks, $task);
+}
+
+function showTask($inputTasks){
+    $index = readLine("Ievadiet uzdevuma index: ");
+    if ($index >= 0 && count($inputTasks) > $index) {
+        echo $inputTasks[$index] . "\n";
+    } else {
+        echo "Invalid number\n";
+        return;
+    }
 }
 // uztaisit do-while ciklu
 
@@ -26,18 +38,18 @@ function addTask($inputTasks){
 
         switch ($choice) {
             case '1':
-              showAllTask();
+              showAllTask($taskList);
               break;
             case '2':
               addTask($taskList);
               break;
             case '3':
-              echo "To be implemented! \n";
+              showTask($taskList);
               break;
             default:
               echo "Invalid option";
           }
-;       $continue = readLine("Vai velies turpinat?\n");
+      $continue = readLine("Vai velies turpinat?");
       } while ($continue != "N");
       
-      ?>
+    
